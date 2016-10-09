@@ -27,18 +27,6 @@ public class Main
 				//add employee
 				ServiceClass.addEmployee();
 				break;
-			case "addComissionEmployee":
-				//add comission employee
-				ServiceClass.addComissionEmployee();
-				break;
-			case "addHourlyEmployee":
-				//add hourly employee
-				ServiceClass.addHourlyEmployee();
-				break;
-			case "addSalaryEmployee":
-				//add salary employee
-				ServiceClass.addSalaryEmployee();
-				break;
 			case "addManufacturer":
 				//add manufacturer
 				ServiceClass.addManufacturer();

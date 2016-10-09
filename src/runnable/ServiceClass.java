@@ -10,103 +10,94 @@ import java.util.Scanner;
 import hr.ComissionEmployee;
 import hr.Employee;
 import hr.HourlyEmployee;
+import hr.Manufacturer;
+import hr.Product;
 import hr.SalaryEmployee;
 
-public class ServiceClass
-{
+public class ServiceClass {
 	public static String choice = "main";
 	public static ArrayList<Employee> employees = new ArrayList<Employee>();
-	public static void getInitialMessage()
-	{
-		System.out.println("Welcome to Georgian!\n" + "Please select an option (number)\n" + "1. Add Employee\n" + "2. Add Manufacturer\n" + "3. Add Product\n" + "4. Exit");
+	public static ArrayList<Manufacturer> companies = new ArrayList<Manufacturer>();
+	public static ArrayList<Product> products = new ArrayList<Product>();
+
+	public static void getInitialMessage() {
+		System.out.println("Welcome to Georgian!\n" + "Please select an option (number)\n" + "1. Add Employee\n"
+				+ "2. Add Manufacturer\n" + "3. Add Product\n" + "4. Exit");
 	}
 
 	/**
 	 * Driver for menu number selection
 	 * 
 	 * @param selection
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
-	public static void handleCases(int selection) throws ParseException
-	{
-		if (choice == "main")
-		{
-			if (selection == 1)
-			{
+	public static void handleCases(int selection) throws ParseException {
+		if (choice == "main") {
+			if (selection == 1) {
 				choice = "addEmployee";
-			} else if (selection == 2)
-			{
+			} else if (selection == 2) {
 				choice = "addManufacturer";
-			} else if (selection == 3)
-			{
+			} else if (selection == 3) {
 				choice = "addProduct";
-			} else if (selection == 4)
-			{
+			} else if (selection == 4) {
 				choice = "exit";
-			} else
-			{
+			} else {
 				inputError();
 			}
-		} else if (choice == "addEmployee")
-		{
-			if (selection == 1)
-			{
+		} else if (choice == "addEmployee") {
+			if (selection == 1) {
 				// hourly employee
 				addHourlyEmployee();
-			} else if (selection == 2)
-			{
+			} else if (selection == 2) {
 				// comission employee
 				addComissionEmployee();
-			} else if (selection == 3)
-			{
+			} else if (selection == 3) {
 				// salary employee
 				addSalaryEmployee();
-			} else if (selection == 4)
-			{
+			} else if (selection == 4) {
 				// back
 				choice = "main";
-			} else
-			{
+			} else {
 				inputError();
 			}
-		} else if (choice == "addManufacturer")
-		{
-
-		} else if (choice == "addProduct")
-		{
-
-		} else
-		{
+		} else {
 
 		}
 	}
 
-	public static void inputError()
-	{
+	public static Manufacturer getManufacturerByID(int id) {
+		for (Manufacturer manufacturer : companies) {
+			if (manufacturer.getID() == id) {
+				return manufacturer;
+			}
+		}
+		inputError();
+		return companies.get(0);
+	}
+
+	public static void inputError() {
 		System.out.println("****Please check your input and try again.****\n");
 	}
 
-	public static void main()
-	{
+	public static void main() {
 		// Generate welcome message
 		getInitialMessage();
 
 	}
 
-	public static void addEmployee()
-	{
+	public static void addEmployee() {
 		// TODO Auto-generated method stub
-		System.out.println("Adding an employee\n" + "1. Hourly employee\n" + "2. Comission employee\n" + "3. Salary employee\n" + "4. Back");
+		System.out.println("Adding an employee\n" + "1. Hourly employee\n" + "2. Comission employee\n"
+				+ "3. Salary employee\n" + "4. Back");
 	}
 
-	public static void addComissionEmployee() throws ParseException
-	{
-		//add new comission employee
+	public static void addComissionEmployee() throws ParseException {
+		// add new comission employee
 		Scanner employeeInfo = new Scanner(System.in);
 		GregorianCalendar birthday = new GregorianCalendar();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
 		Date date;
-		
+
 		System.out.println("First Name:");
 		String firstName = employeeInfo.nextLine();
 		System.out.println("Last Name:");
@@ -131,19 +122,19 @@ public class ServiceClass
 		int grossSales = employeeInfo.nextInt();
 		System.out.println("Comission rate ($x.xx):");
 		double comissionRate = employeeInfo.nextDouble();
-		
-		employees.add(new ComissionEmployee(firstName, lastName, birthday, gender, sin, phone, street, city, postal, grossSales, comissionRate));
+
+		employees.add(new ComissionEmployee(firstName, lastName, birthday, gender, sin, phone, street, city, postal,
+				grossSales, comissionRate));
 		System.out.println("successfully added new employee\n");
 	}
 
-	public static void addHourlyEmployee() throws ParseException
-	{
+	public static void addHourlyEmployee() throws ParseException {
 		// Adding an hourly employee
 		Scanner employeeInfo = new Scanner(System.in);
 		GregorianCalendar birthday = new GregorianCalendar();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
 		Date date;
-		
+
 		System.out.println("First Name:");
 		String firstName = employeeInfo.nextLine();
 		System.out.println("Last Name:");
@@ -166,19 +157,19 @@ public class ServiceClass
 		String postal = employeeInfo.nextLine();
 		System.out.println("Hourly Rate ($x.xx):");
 		double hourlyRate = employeeInfo.nextDouble();
-		
-		employees.add(new HourlyEmployee(firstName, lastName, birthday, gender, sin, phone, street, city, postal, hourlyRate));
+
+		employees.add(new HourlyEmployee(firstName, lastName, birthday, gender, sin, phone, street, city, postal,
+				hourlyRate));
 		System.out.println("successfully added new employee\n");
 	}
 
-	public static void addSalaryEmployee() throws ParseException
-	{
-		//add new salary employee
+	public static void addSalaryEmployee() throws ParseException {
+		// add new salary employee
 		Scanner employeeInfo = new Scanner(System.in);
 		GregorianCalendar birthday = new GregorianCalendar();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
 		Date date;
-		
+
 		System.out.println("First Name:");
 		String firstName = employeeInfo.nextLine();
 		System.out.println("Last Name:");
@@ -201,22 +192,49 @@ public class ServiceClass
 		String postal = employeeInfo.nextLine();
 		System.out.println("Salary ($x.xx):");
 		double salary = employeeInfo.nextDouble();
-		
-		employees.add(new SalaryEmployee(firstName, lastName, birthday, gender, sin, phone, street, city, postal, salary));
+
+		employees.add(
+				new SalaryEmployee(firstName, lastName, birthday, gender, sin, phone, street, city, postal, salary));
 		System.out.println("successfully added new employee\n");
 
 	}
 
-	public static void addManufacturer()
-	{
-		// TODO Auto-generated method stub
+	public static void addManufacturer() {
+		Scanner manufacturerInfo = new Scanner(System.in);
 
+		System.out.println("Company name: ");
+		String companyName = manufacturerInfo.nextLine();
+		System.out.println("Street: ");
+		String companyStreet = manufacturerInfo.nextLine();
+		System.out.println("City: ");
+		String companyCity = manufacturerInfo.nextLine();
+		System.out.println("Postal code: ");
+		String companyPostal = manufacturerInfo.nextLine();
+
+		companies.add(new Manufacturer(companyName, companyStreet, companyCity, companyPostal));
+		System.out.println("Successfully added new Manufacturer\n");
+		choice = "main";
+		getInitialMessage();
 	}
 
-	public static void addProduct()
-	{
-		// TODO Auto-generated method stub
+	public static void addProduct() {
+		Scanner productInfo = new Scanner(System.in);
+		System.out.println("Product name: ");
+		String productName = productInfo.nextLine();
+		System.out.println("Price ($x.xx)");
+		double productPrice = productInfo.nextDouble();
+		System.out.println("SKU #: ");
+		int productSKU = productInfo.nextInt();
+		for (Manufacturer manufacturer : companies) {
+			System.out.println(manufacturer.toString() + "\n");
+		}
+		System.out.println("Enter ID of manufacturer of product");
+		Manufacturer productManufacturer = getManufacturerByID(productInfo.nextInt());
 
+		products.add(new Product(productName, productPrice, productSKU, productManufacturer));
+		System.out.println("Successfully added a new product\n");
+		choice = "main";
+		getInitialMessage();
 	}
 
 }
