@@ -9,6 +9,7 @@ public class SalaryEmployee extends Employee
 	public SalaryEmployee(String firstName, String lastName, GregorianCalendar dateOfBirth, String gender, int sin, double phone, String street, String city, String postal, double salary)
 	{
 		super(firstName, lastName, dateOfBirth, gender, sin, phone, street, city, postal);
+		this.salary = salary;
 	}
 	
 	public double getSalary(){
@@ -23,7 +24,7 @@ public class SalaryEmployee extends Employee
 	public String toString(){
 		return super.toString() + 
 				"Salary Employee\n" +
-				"Salary: \t\t" + salary;
+				"Salary: \t" + salary;
 	}
 
 }

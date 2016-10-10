@@ -27,17 +27,35 @@ public class Main
 				//add employee
 				ServiceClass.addEmployee();
 				break;
+			case "listEmployees":
+				//show employees
+				ServiceClass.listEmployees();
+				input.nextInt();
+				ServiceClass.main();
+				break;
 			case "addManufacturer":
 				//add manufacturer
 				ServiceClass.addManufacturer();
+				break;
+			case "listManufacturers":
+				//list the manufacturers
+				ServiceClass.listManufacturers();
 				break;
 			case "addProduct":
 				//add product
 				ServiceClass.addProduct();
 				break;
-			default:
-				//exit
+			case "listProducts":
+				//list the products
+				ServiceClass.listProducts();
+				break;
+			case "exit":
+				//close the application
 				running = false;
+				break;
+			default:
+				//Throw error
+				ServiceClass.inputError();
 				break;
 			}
 		}
