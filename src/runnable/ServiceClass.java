@@ -21,6 +21,9 @@ public class ServiceClass
 	public static ArrayList<Manufacturer> companies = new ArrayList<Manufacturer>();
 	public static ArrayList<Product> products = new ArrayList<Product>();
 
+	/**
+	 * Prints out the main menu interface.
+	 */
 	public static void getInitialMessage()
 	{
 		System.out.println("Welcome to Georgian!\n" 
@@ -36,7 +39,7 @@ public class ServiceClass
 	}
 
 	/**
-	 * Driver for menu number selection
+	 * Handles the switch for the Driver; converts the selection in int to high level string.
 	 * 
 	 * @param selection
 	 * @throws ParseException
@@ -99,6 +102,11 @@ public class ServiceClass
 		}
 	}
 
+	/**
+	 * Takes an id as an int and returns the manufacturer with that ID.
+	 * @param id
+	 * @return
+	 */
 	public static Manufacturer getManufacturerByID(int id)
 	{
 		for (Manufacturer manufacturer : companies)
@@ -112,18 +120,26 @@ public class ServiceClass
 		return companies.get(0);
 	}
 
+	/**
+	 * Displays an error stating the end user has made a input error.
+	 */
 	public static void inputError()
 	{
 		System.out.println("****Please check your input and try again.****\n");
 	}
 
+	/**
+	 * Main page of application
+	 */
 	public static void main()
 	{
 		// Generate welcome message
 		getInitialMessage();
-
 	}
 
+	/**
+	 * Prints out a list of employees and their type.
+	 */
 	public static void listEmployees()
 	{
 		for (Employee employee : employees)
@@ -133,6 +149,9 @@ public class ServiceClass
 
 	}
 
+	/**
+	 * Prints out a list of manufacturers.
+	 */
 	public static void listManufacturers()
 	{
 		for (Manufacturer manufacturer : companies)
@@ -141,6 +160,9 @@ public class ServiceClass
 		}
 	}
 
+	/**
+	 * Prints out the list of present products.
+	 */
 	public static void listProducts()
 	{
 		for (Product product : products)
@@ -149,12 +171,19 @@ public class ServiceClass
 		}
 	}
 
+	/**
+	 * The message to display when adding an employee, requests specific employee type.
+	 */
 	public static void addEmployee()
 	{
 		// TODO Auto-generated method stub
 		System.out.println("Adding an employee\n" + "1. Hourly employee\n" + "2. Comission employee\n" + "3. Salary employee\n" + "4. Back");
 	}
 
+	/**
+	 * Adds a commission employee based on the end users input.
+	 * @throws ParseException
+	 */
 	public static void addComissionEmployee() throws ParseException
 	{
 		// add new comission employee
@@ -192,6 +221,10 @@ public class ServiceClass
 		System.out.println("successfully added new employee\n");
 	}
 
+	/**
+	 * Creates a hourly employee based on the end users input
+	 * @throws ParseException
+	 */
 	public static void addHourlyEmployee() throws ParseException
 	{
 		// Adding an hourly employee
@@ -222,11 +255,17 @@ public class ServiceClass
 		String postal = employeeInfo.nextLine();
 		System.out.println("Hourly Rate ($x.xx):");
 		double hourlyRate = employeeInfo.nextDouble();
+		System.out.println("Hours Per Week:");
+		int hoursPerWeek = employeeInfo.nextInt();
 
-		employees.add(new HourlyEmployee(firstName, lastName, birthday, gender, sin, phone, street, city, postal, hourlyRate));
+		employees.add(new HourlyEmployee(firstName, lastName, birthday, gender, sin, phone, street, city, postal, hourlyRate, hoursPerWeek));
 		System.out.println("successfully added new employee\n");
 	}
 
+	/**
+	 * Adds a salary employee based on the end users input
+	 * @throws ParseException
+	 */
 	public static void addSalaryEmployee() throws ParseException
 	{
 		// add new salary employee
@@ -263,6 +302,9 @@ public class ServiceClass
 
 	}
 
+	/**
+	 * Takes the users input and creates a manufacturer object.
+	 */
 	public static void addManufacturer()
 	{
 		Scanner manufacturerInfo = new Scanner(System.in);
@@ -282,6 +324,9 @@ public class ServiceClass
 		getInitialMessage();
 	}
 
+	/**
+	 * Takes the users input to create a product object. Includes listing of manufacturers.
+	 */
 	public static void addProduct()
 	{
 		Scanner productInfo = new Scanner(System.in);
@@ -302,6 +347,21 @@ public class ServiceClass
 		System.out.println("Successfully added a new product\n");
 		choice = "main";
 		getInitialMessage();
+	}
+
+	/**
+	 * This method takes the user input and searches multiple attributes of the employee object
+	 */
+	public static void searchEmployees()
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter your search criteria");
+		String query = input.nextLine();
+		for(Employee employee : employees){
+			if(employee.getFirstName() == query || employee.getLastName() == query || employee.getCity() == query || Double.toString(employee.getPhone()) == query){
+				System.out.println(employee.toString() + "\n");
+			}
+		}
 	}
 
 }

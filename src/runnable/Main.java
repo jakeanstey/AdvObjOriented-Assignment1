@@ -16,6 +16,9 @@ public class Main
 		
 		ServiceClass.getInitialMessage();
 		
+		/**
+		 * The application loop, runs until running = false
+		 */
 		while(running){
 			ServiceClass.handleCases(input.nextInt());
 			switch(ServiceClass.choice){
@@ -33,6 +36,8 @@ public class Main
 				input.nextInt();
 				ServiceClass.main();
 				break;
+			case "searchEmployees":
+				ServiceClass.searchEmployees();
 			case "addManufacturer":
 				//add manufacturer
 				ServiceClass.addManufacturer();
@@ -40,6 +45,8 @@ public class Main
 			case "listManufacturers":
 				//list the manufacturers
 				ServiceClass.listManufacturers();
+				input.nextLine();
+				ServiceClass.main();
 				break;
 			case "addProduct":
 				//add product
@@ -48,6 +55,8 @@ public class Main
 			case "listProducts":
 				//list the products
 				ServiceClass.listProducts();
+				input.nextLine();
+				ServiceClass.main();
 				break;
 			case "exit":
 				//close the application

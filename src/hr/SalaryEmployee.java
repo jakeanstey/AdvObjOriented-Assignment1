@@ -20,11 +20,23 @@ public class SalaryEmployee extends Employee
 		this.salary = salary;
 	}
 	
+	/**
+	 * Returns the employees information including pay.
+	 */
 	@Override
 	public String toString(){
 		return super.toString() + 
 				"Salary Employee\n" +
 				"Salary: \t" + salary;
+	}
+
+	/**
+	 * calculates the bi-weekly pay of the salary employee.
+	 */
+	@Override
+	public double calculatePay()
+	{
+		return salary / 26;
 	}
 
 }

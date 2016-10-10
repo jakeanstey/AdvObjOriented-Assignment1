@@ -33,6 +33,9 @@ public class ComissionEmployee extends Employee
 		this.comissionRate = comissionRate;
 	}
 
+	/**
+	 * Returns the employees information including pay.
+	 */
 	@Override
 	public String toString()
 	{
@@ -40,6 +43,15 @@ public class ComissionEmployee extends Employee
 				"Comission employee \n"
 				+ "Gross sales: \t" + grossSales
 				+ "Comission rate: \t" + comissionRate;
+	}
+
+	/**
+	 * calculates the pay of a commissioned employee.
+	 */
+	@Override
+	public double calculatePay()
+	{
+		return comissionRate * grossSales;
 	}
 
 }

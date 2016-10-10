@@ -108,5 +108,7 @@ public abstract class Employee
 	{
 		return firstName + " " + lastName + "\n";
 	}
+	
+	public abstract double calculatePay();
 
 }
