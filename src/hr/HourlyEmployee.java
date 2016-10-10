@@ -30,7 +30,7 @@ public class HourlyEmployee extends Employee
 	@Override
 	public String toString(){
 		return super.toString() + 
-				"Hourly employee"
+				"Hourly employee\n"
 				+ "$" + calculatePay() + " bi-weekly";
 	}
 

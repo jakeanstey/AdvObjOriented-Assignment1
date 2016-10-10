@@ -41,8 +41,9 @@ public class ComissionEmployee extends Employee
 	{
 		return super.toString() + 
 				"Comission employee \n"
-				+ "Gross sales: \t" + grossSales
-				+ "Comission rate: \t" + comissionRate;
+				+ "Gross sales: \t" + grossSales + "\n"
+				+ "Comission rate: \t" + comissionRate + "\n"
+				+ "$" + calculatePay() + " per cheque";
 	}
 
 	/**

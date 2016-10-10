@@ -33,11 +33,10 @@ public class Main
 			case "listEmployees":
 				//show employees
 				ServiceClass.listEmployees();
-				input.nextInt();
-				ServiceClass.main();
 				break;
 			case "searchEmployees":
 				ServiceClass.searchEmployees();
+				break;
 			case "addManufacturer":
 				//add manufacturer
 				ServiceClass.addManufacturer();
@@ -45,8 +44,6 @@ public class Main
 			case "listManufacturers":
 				//list the manufacturers
 				ServiceClass.listManufacturers();
-				input.nextLine();
-				ServiceClass.main();
 				break;
 			case "addProduct":
 				//add product
@@ -55,11 +52,10 @@ public class Main
 			case "listProducts":
 				//list the products
 				ServiceClass.listProducts();
-				input.nextLine();
-				ServiceClass.main();
 				break;
 			case "exit":
 				//close the application
+				System.out.println("Bye!");
 				running = false;
 				break;
 			default:

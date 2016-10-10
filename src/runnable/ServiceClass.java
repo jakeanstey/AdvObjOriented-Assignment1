@@ -26,20 +26,12 @@ public class ServiceClass
 	 */
 	public static void getInitialMessage()
 	{
-		System.out.println("Welcome to Georgian!\n" 
-				+ "Please select an option (number)\n" 
-				+ "1. Add Employee\n" 
-				+ "2. List Employees\n"
-				+ "3. Search Employees" 
-				+ "4. Add Manufacturer\n" 
-				+ "5. List Manufacturers\n"
-				+ "6. Add Product\n"
-				+ "7. List Products\n" 
-				+ "8. Exit");
+		System.out.println("Welcome to Georgian!\n" + "Please select an option (number)\n" + "1. Add Employee\n" + "2. List Employees\n" + "3. Search Employees\n" + "4. Add Manufacturer\n" + "5. List Manufacturers\n" + "6. Add Product\n" + "7. List Products\n" + "8. Exit");
 	}
 
 	/**
-	 * Handles the switch for the Driver; converts the selection in int to high level string.
+	 * Handles the switch for the Driver; converts the selection in int to high
+	 * level string.
 	 * 
 	 * @param selection
 	 * @throws ParseException
@@ -56,21 +48,23 @@ public class ServiceClass
 				choice = "listEmployees";
 			} else if (selection == 3)
 			{
-				choice = "seacrchEmployees";
+				choice = "searchEmployees";
 			} else if (selection == 4)
 			{
 				choice = "addManufacturer";
 			} else if (selection == 5)
 			{
 				choice = "listManufacturers";
-			}else if(selection == 6){
+			} else if (selection == 6)
+			{
 				choice = "addProduct";
-			}else if(selection == 7){
+			} else if (selection == 7)
+			{
 				choice = "listProducts";
-			}else if(selection == 8){
+			} else if (selection == 8)
+			{
 				choice = "exit";
-			}
-			else
+			} else
 			{
 				inputError();
 			}
@@ -104,6 +98,7 @@ public class ServiceClass
 
 	/**
 	 * Takes an id as an int and returns the manufacturer with that ID.
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -146,7 +141,9 @@ public class ServiceClass
 		{
 			System.out.println(employee.toString() + "\n");
 		}
-
+		System.out.println("---END OF RESULTS---");
+		choice = "main";
+		getInitialMessage();
 	}
 
 	/**
@@ -158,6 +155,9 @@ public class ServiceClass
 		{
 			System.out.println(manufacturer.toString() + "\n");
 		}
+		System.out.println("---END OF RESULTS---");
+		choice = "main";
+		getInitialMessage();
 	}
 
 	/**
@@ -169,10 +169,14 @@ public class ServiceClass
 		{
 			System.out.println(product.toString() + "\n");
 		}
+		System.out.println("---END OF RESULTS---");
+		choice = "main";
+		getInitialMessage();
 	}
 
 	/**
-	 * The message to display when adding an employee, requests specific employee type.
+	 * The message to display when adding an employee, requests specific
+	 * employee type.
 	 */
 	public static void addEmployee()
 	{
@@ -182,6 +186,7 @@ public class ServiceClass
 
 	/**
 	 * Adds a commission employee based on the end users input.
+	 * 
 	 * @throws ParseException
 	 */
 	public static void addComissionEmployee() throws ParseException
@@ -223,6 +228,7 @@ public class ServiceClass
 
 	/**
 	 * Creates a hourly employee based on the end users input
+	 * 
 	 * @throws ParseException
 	 */
 	public static void addHourlyEmployee() throws ParseException
@@ -264,6 +270,7 @@ public class ServiceClass
 
 	/**
 	 * Adds a salary employee based on the end users input
+	 * 
 	 * @throws ParseException
 	 */
 	public static void addSalaryEmployee() throws ParseException
@@ -325,7 +332,8 @@ public class ServiceClass
 	}
 
 	/**
-	 * Takes the users input to create a product object. Includes listing of manufacturers.
+	 * Takes the users input to create a product object. Includes listing of
+	 * manufacturers.
 	 */
 	public static void addProduct()
 	{
@@ -350,18 +358,23 @@ public class ServiceClass
 	}
 
 	/**
-	 * This method takes the user input and searches multiple attributes of the employee object
+	 * This method takes the user input and searches multiple attributes of the
+	 * employee object
 	 */
 	public static void searchEmployees()
 	{
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter your search criteria");
 		String query = input.nextLine();
-		for(Employee employee : employees){
-			if(employee.getFirstName() == query || employee.getLastName() == query || employee.getCity() == query || Double.toString(employee.getPhone()) == query){
+		for (Employee employee : employees)
+		{
+			if (employee.getFirstName().contains(query) || employee.getLastName() == query || employee.getCity() == query || Double.toString(employee.getPhone()) == query)
+			{
 				System.out.println(employee.toString() + "\n");
 			}
 		}
+		choice = "main";
+		getInitialMessage();
 	}
 
 }

@@ -27,7 +27,8 @@ public class SalaryEmployee extends Employee
 	public String toString(){
 		return super.toString() + 
 				"Salary Employee\n" +
-				"Salary: \t" + salary;
+				"Salary: \t" + salary + "\n"
+				+ "$" + calculatePay() + " bi-weekly";
 	}
 
 	/**
